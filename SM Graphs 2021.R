@@ -1,18 +1,23 @@
+#Code to plot SM data from Modena Fields, UT
+#By Laura Christiansen, 2021
+# Uath State University
+
+
 library(readxl)
 library(tidyr)
 library(tidyverse)
 
 setwd("~/Modena Data")
 
-corn_252=read_excel("Allen/Soil Moisture/2021/Corn/Modena 30 Corn North July 6.xlsx", sheet="SM Data")
-corn_245=read_excel("Allen/Soil Moisture/2021/Corn/Modena 30 Corn SE July 6.xlsx", sheet="SM Data")
-corn_215=read_excel("Allen/Soil Moisture/2021/Corn/Modena 30 Corn West July 6.xlsx", sheet="SM Data")
-corn_4252=read_excel("Allen/Soil Moisture/2021/Corn/Modena 4 Corn North July 6.xlsx", sheet="SM Data")
-corn_4245=read_excel("Allen/Soil Moisture/2021/Corn/Modena 4 Corn East July 6.xlsx", sheet="SM Data")
-corn_4215=read_excel("Allen/Soil Moisture/2021/Corn/Modena 4 Corn West July 6.xlsx", sheet="SM Data")
-alf_216=read_excel("Allen/Soil Moisture/2021/Alfalfa/Modena Alfalfa North July 6.xlsx", sheet="SM Data")
-alf_226=read_excel("Allen/Soil Moisture/2021/Alfalfa/Modena Alfalfa East July 6.xlsx", sheet="SM Data")
-alf_263=read_excel("Allen/Soil Moisture/2021/Alfalfa/Modena Alfalfa West July 6.xlsx", sheet="SM Data")
+corn_252=read_excel("Modena 30 Corn North July 6.xlsx", sheet="SM Data")
+corn_245=read_excel("Modena 30 Corn SE July 6.xlsx", sheet="SM Data")
+corn_215=read_excel("Modena 30 Corn West July 6.xlsx", sheet="SM Data")
+corn_4252=read_excel("Modena 4 Corn North July 6.xlsx", sheet="SM Data")
+corn_4245=read_excel("Modena 4 Corn East July 6.xlsx", sheet="SM Data")
+corn_4215=read_excel("Modena 4 Corn West July 6.xlsx", sheet="SM Data")
+alf_216=read_excel("Modena Alfalfa North July 6.xlsx", sheet="SM Data")
+alf_226=read_excel("Modena Alfalfa East July 6.xlsx", sheet="SM Data")
+alf_263=read_excel("Modena Alfalfa West July 6.xlsx", sheet="SM Data")
 
 ##Corn 252 Soil Moisture 
 plot(corn_252$`Date`, corn_252$`1 Acclima`, ylim=c(5, 45), type='l', col='coral4', main='Corn 252 Soil Moisture Midnight Readings', xlab='2021', ylab='Soil Moisture Content (%)') 
