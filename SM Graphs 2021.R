@@ -7,7 +7,7 @@ library(readxl)
 library(tidyr)
 library(tidyverse)
 
-setwd("~/Modena Data")
+#setwd("~/Modena Data")
 
 corn_252=read_excel("Modena 30 Corn North July 6.xlsx", sheet="SM Data")
 corn_245=read_excel("Modena 30 Corn SE July 6.xlsx", sheet="SM Data")
