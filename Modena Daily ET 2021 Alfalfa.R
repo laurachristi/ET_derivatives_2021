@@ -10,8 +10,9 @@ library(multcompView)
 library(tidyverse)
 
 # Load the data and define the variables for sensor 101####
-setwd("~/Modena Data") # set the working directory in the folder containing the data file
-data.101=read_excel("2021 Data/Modena Alfalfa North.xlsx", sheet="SM Data") # load the SM data from excel
+# setwd("~/Modena Data") # set the working directory in the folder containing the data file
+# data.101=read_excel("2021 Data/Modena Alfalfa North.xlsx", sheet="SM Data") # load the SM data from excel
+data.101=read_excel("Modena Alfalfa North.xlsx", sheet="SM Data") # load the SM data from excel
 data.101=na.omit(data.101) # eliminate the days with no data
 
 n=length(data.101$Date) # Number of days with data
@@ -51,11 +52,12 @@ plot(data.101$Date, -rd,
      main='Corn 30 East Root Depth', ylab='Soil depth (mm)', xlab='2021')
 abline(h=0, lwd=2)
 abline(h=-sd1, col='coral4', lwd=2)
-abline(h=-sd2, col='steelblue4', lwd=2)
-abline(h=-sd3, col='gold4', lwd=2)
-abline(h=-sd4, col='olivedrab4', lwd=2)
-abline(h=-sd5, col='coral2', lwd=2)
-abline(h=-sd6, col='steelblue1', lwd=2)
+abline(h=-sd2-sd1, col='steelblue4', lwd=2)
+abline(h=-sd3-sd2-sd1, col='gold4', lwd=2)
+abline(h=-sd4-sd3-sd2-sd1, col='olivedrab4', lwd=2)
+abline(h=-sd5-sd4-sd3-sd2-sd1, col='coral2', lwd=2)
+abline(h=-sd6-sd5-sd4-sd3-sd2-sd1, col='steelblue1', lwd=2)
+abline(h=-sd7-sd6-sd5-sd4-sd3-sd2-sd1, col='steelblue1', lwd=2)
 
 legend('bottom', lty=1, lwd=3, legend=c('s1', 's2','s3','s4','3 in','6 in','1 ft','2 ft','s5','s6',NA, NA,'3 ft','4 ft',NA,NA), col = c(NA,NA,NA,NA,'coral4','steelblue4','gold4','olivedrab4',NA,NA,NA,NA,'coral2','steelblue1',NA,NA), ncol=4)
 
@@ -692,7 +694,7 @@ for (i in ((w+1)/2):n) {
   # f1[i]=(SM4[i+1]-SM4[i-1])/w
   low_val=i-(w-1)/2
   hig_val=i+(w-1)/2
-  y=SM4[low_val:hig_val]
+  y=SM5[low_val:hig_val]
   x=1:w
   reg=lm(y~x)
   #  f1[i]=(wc.1[i+1]-wc.1[i-1])/w
@@ -744,7 +746,7 @@ for (i in ((w+1)/2):n) {
   # f1[i]=(SM4[i+1]-SM4[i-1])/w
   low_val=i-(w-1)/2
   hig_val=i+(w-1)/2
-  y=SM4[low_val:hig_val]
+  y=SM6[low_val:hig_val]
   x=1:w
   reg=lm(y~x)
   #  f1[i]=(wc.1[i+1]-wc.1[i-1])/w
@@ -797,7 +799,7 @@ for (i in ((w+1)/2):n) {
   # f1[i]=(SM4[i+1]-SM4[i-1])/w
   low_val=i-(w-1)/2
   hig_val=i+(w-1)/2
-  y=SM4[low_val:hig_val]
+  y=SM7[low_val:hig_val]
   x=1:w
   reg=lm(y~x)
   #  f1[i]=(wc.1[i+1]-wc.1[i-1])/w
@@ -1364,4 +1366,4 @@ ggplot(comparison.1, aes(x = method, y = ET, fill = date)) +
 
 # Alfalfa North
 Results.1=data.frame(Date=data.101$Date, ET.A.1, ET.B.1, ET.C.1, ET.D.1, ET.E.1, ET.F.1)
-write_xlsx(Results.1, path="Allen/Soil Moisture/2021/Corn/ET Alfalfa North.xlsx") # write the excel with the daily data
+write_xlsx(Results.1, path="ET Alfalfa North.xlsx") # write the excel with the daily data
